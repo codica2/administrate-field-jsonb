@@ -1,0 +1,8 @@
+<% data.each.with_index(1) do |d, index| %>
+  <dt class='attribute-label administrate-field-jsonb-accordion'><%= "#{field.attribute.to_s.singularize.titleize} - #{index}" %></dt>
+  <dd class='administrate-field-jsonb-panel'>
+    <dl>
+      <%= render field.to_partial_path('hash'), field: field, structure: structure, data: d %>
+    <dl>
+  </dd>
+<% end %>

@@ -1,0 +1,9 @@
+<% field = type.new(key, value, :show) %>
+<dt class='attribute-label'><%= t(
+    "helpers.label.#{resource_name}.#{key}",
+    default: key.to_s.titleize,
+  ) %>
+</dt>
+<dd class='attribute-data'>
+  <%= render_field field, page: :show %>
+</dd>

@@ -13,9 +13,25 @@ module Administrate
 
         result = data
         options[:transform].each do |method|
-          result = data.public_send(method)
+          result = result.is_a?(Array) ? result.map(&method) : result.public_send(method)
         end
         result
+      end
+
+      def array?
+        transform.is_a?(Array)
+      end
+
+      def advanced_view?
+        advanced_view.present? && advanced_view.is_a?(Hash)
+      end
+
+      def advanced_view
+        options[:advanced_view]
+      end
+
+      def to_partial_path(partial = page)
+        "/fields/jsonb/#{partial}"
       end
 
       class Engine < ::Rails::Engine

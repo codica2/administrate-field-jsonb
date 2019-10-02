@@ -1,0 +1,36 @@
+.administrate-field-jsonb-accordion {
+  --margin: calc(15% - .5rem);
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: calc(100% - var(--margin));
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  margin-left: calc(var(--margin));
+}
+
+.administrate-field-jsonb-active, .administrate-field-jsonb-accordion:hover {
+  background-color: #ccc;
+}
+
+.administrate-field-jsonb-panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.administrate-field-jsonb-accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.administrate-field-jsonb-active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
