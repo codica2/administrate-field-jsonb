@@ -1,8 +1,8 @@
 # Administrate::Field::Jsonb
 
-A plugin to show and edit JSON objects within [Administrate](https://github.com/thoughtbot/administrate). inspired by [Administrate::Field::JSON](https://github.com/eddietejeda/administrate-field-json)
+A plugin to show and edit JSON objects within [Administrate](https://github.com/thoughtbot/administrate). inspired by [Administrate::Field::JSON](https://github.com/eddietejeda/administrate-field-json).
 
-This gem uses [jsoneditor](https://github.com/josdejong/jsoneditor)
+This gem uses [jsoneditor](https://github.com/josdejong/jsoneditor).
 
 ## Installation
 
@@ -23,7 +23,7 @@ bundle
 ```ruby
 ATTRIBUTE_TYPES = {
   # ...
-  data: Field::JSONB
+  details: Field::JSONB
 }.freeze
 ```
 
@@ -32,11 +32,33 @@ If you have some kind of serialization, you can call methods on your object with
 ```ruby
 ATTRIBUTE_TYPES = {
   # ...
-  data: Field::JSONB.with_options(
-    transform: %w[to_h]
+  details: Field::JSONB.with_options(
+    transform: %w[to_h symbolize_keys]
   )
 }.freeze
 ```
+
+If you want to edit json displaying on `show` page, you can use `advanced_view` option (both JSON and arrays are supported).
+
+```ruby
+ATTRIBUTE_TYPES = {
+  # ...
+  details: Field::JSONB.with_options(transform: %i[to_h symbolize_keys], advanced_view: {
+    company:  Field::String,
+    position: Field::String,
+    skills: Field::JSONB.with_options(advanced_view: {
+      'name'  => Field::String,
+      'years' => Field::Number.with_options(suffix: ' years')
+    })
+  }),
+  languages: Field::JSONB.with_options(advanced_view: {
+    'title' => Field::String,
+    'code'  => Field::String,
+  })
+}.freeze
+```
+
+NOTE: don't define `advanced_view` option if you want to display you JSON with the [jsoneditor](https://github.com/josdejong/jsoneditor).
 
 ## How it looks like
 
@@ -48,15 +70,64 @@ ATTRIBUTE_TYPES = {
 
 ### Show
 
-<p align="center">
- <img src="docs/images/show.png">
-</p>
-
-### Index
+#### jsoneditor mode
 
 <p align="center">
- <img src="docs/images/index.png">
+ <img src="docs/images/show_jsoneditor.png">
 </p>
+
+#### advanced_view mode
+
+<p align="center">
+ <img src="docs/images/advanced_view_full.png">
+</p>
+
+#### advanced_view object
+
+<p align="center">
+ <img src="docs/images/advanced_view_object.png">
+</p>
+
+#### advanced_view array
+
+<p align="center">
+ <img src="docs/images/advanced_view_array.png">
+</p>
+
+## Recipes
+
+If you want to store your JSON in hash format and not a string add this to your model.
+
+```ruby
+def your_field_name=(value)
+  self[:your_field_name] = value.is_a?(String) ? JSON.parse(value) : value
+end
+```
+
+Example:
+
+```ruby
+def details=(value)
+  self[:details] = value.is_a?(String) ? JSON.parse(value) : value
+end
+```
+
+<hr>
+
+If you don't see details in `advanced_view`, try to add this
+
+```ruby
+transform: %i[to_h symbolize_keys]
+```
+
+or use string keys.
+
+```ruby
+languages: Field::JSONB.with_options(advanced_view: {
+  'title' => Field::String,
+  'code'  => Field::String,
+})
+```
 
 ## License
 
