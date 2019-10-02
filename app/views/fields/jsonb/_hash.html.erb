@@ -1,0 +1,12 @@
+<% structure.each do |sk, sv| %>
+  <% if sv.is_a?(Hash) %>
+    <dt class='attribute-label administrate-field-jsonb-accordion'><%= sk.to_s.titleize %></dt>
+    <dd class='administrate-field-jsonb-panel'>
+      <dl>
+        <%= render field.to_partial_path('hash'), field: field, structure: structure[sk], data: data[sk] %>
+      <dl>
+    </dd>
+  <% else %>
+    <%= render field.to_partial_path('field'), type: sv, key: sk, value: data[sk] %>
+  <% end %>
+<% end %>
