@@ -1,14 +1,11 @@
 <% if field.advanced_view? %>
-  <% if field.array? %>
-    <%= render field.to_partial_path('array'), field: field, structure: field.advanced_view, data: field.transform %>
-  <% else %>
-    <dt class='attribute-label administrate-field-jsonb-accordion'><%= field.attribute.to_s.titleize %></dt>
-    <dd class='administrate-field-jsonb-panel'>
-      <dl>
-         <%= render field.to_partial_path('hash'), field: field, structure: field.advanced_view, data: field.transform %>
-      <dl>
-    </dd>
-  <% end %>
+  <dl class='administrate-field-jsonb-wrapper'>
+    <% if field.array? %>
+      <%= render field.to_partial_path('array'), field: field, structure: field.advanced_view, data: field.transform %>
+    <% else %>
+      <%= render field.to_partial_path('hash'), field: field, structure: field.advanced_view, data: field.transform %>
+    <% end %>
+  </dl>
 <% else %>
   <div class='administrate-jsoneditor-viewer'>
     <p><%= text_area_tag field.attribute, field.transform.to_json.html_safe.squish %></p>
