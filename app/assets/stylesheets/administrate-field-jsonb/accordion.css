@@ -1,15 +1,32 @@
+.administrate-field-jsonb-wrapper {
+  float: left;
+  width: 100%;
+  margin-top: 0;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.administrate-field-jsonb-box {
+  margin-bottom: 0;
+  float: left;
+  width: 100%;
+}
+
 .administrate-field-jsonb-accordion {
-  --margin: calc(15% - .5rem);
+  width: 100%;
+  text-align: left;
+  padding: 5px 15px;
   background-color: #eee;
   color: #444;
   cursor: pointer;
-  padding: 18px;
-  width: calc(100% - var(--margin));
-  text-align: left;
-  border: none;
   outline: none;
   transition: 0.4s;
-  margin-left: calc(var(--margin));
+  margin-bottom: 0;
+  margin-top: 15px;
+}
+
+.administrate-field-jsonb-accordion:first-child {
+  margin-top: 0;
 }
 
 .administrate-field-jsonb-active, .administrate-field-jsonb-accordion:hover {
@@ -17,10 +34,11 @@
 }
 
 .administrate-field-jsonb-panel {
-  padding: 0 18px;
+  padding: 0 18px 15px;
   background-color: white;
   display: none;
   overflow: hidden;
+  border: 1px solid #ccc;
 }
 
 .administrate-field-jsonb-accordion:after {
