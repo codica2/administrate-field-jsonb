@@ -1,4 +1,6 @@
-<% if field.advanced_view? %>
+<% if field.transform.blank? %>
+  <%= render field.to_partial_path('field'), type: ::Administrate::Field::String, key: field.attribute, value: '' %>
+<% elsif field.advanced_view? %>
   <dl class='administrate-field-jsonb-wrapper'>
     <% if field.array? %>
       <%= render field.to_partial_path('array'), field: field, structure: field.advanced_view, data: field.transform %>
