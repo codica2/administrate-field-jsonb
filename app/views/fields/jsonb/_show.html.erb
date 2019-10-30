@@ -1,5 +1,5 @@
 <% if field.transform.blank? %>
-  <%= render field.to_partial_path('field'), type: ::Administrate::Field::String, key: field.attribute, value: '' %>
+  <%= field.blank_sign %>
 <% elsif field.advanced_view? %>
   <dl class='administrate-field-jsonb-wrapper'>
     <% if field.array? %>
