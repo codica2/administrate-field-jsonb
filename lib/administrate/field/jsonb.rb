@@ -35,6 +35,10 @@ module Administrate
         "/fields/jsonb/#{partial}"
       end
 
+      def blank_sign
+        options[:blank_sign] || '-'
+      end
+
       class Engine < ::Rails::Engine
 
         Administrate::Engine.add_javascript 'administrate-field-jsonb/application'

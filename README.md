@@ -58,7 +58,18 @@ ATTRIBUTE_TYPES = {
 }.freeze
 ```
 
-NOTE: don't define `advanced_view` option if you want to display you JSON with the [jsoneditor](https://github.com/josdejong/jsoneditor).
+NOTE: don't define `advanced_view` option if you want to display JSON with the [jsoneditor](https://github.com/josdejong/jsoneditor).
+
+To customize what to display if you have an empty value, use `blank_sign` option, by default it's `-`.
+
+```ruby
+ATTRIBUTE_TYPES = {
+  # ...
+  details: Field::JSONB.with_options(
+    blank_sign: 'oops, missed'
+  )
+}.freeze
+```
 
 ## How it looks like
 
