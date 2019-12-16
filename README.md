@@ -18,6 +18,15 @@ And then execute:
 bundle
 ```
 
+If you are using asset pipeline, add the folloing lines to your `manifest.js`:
+
+```js
+//= link administrate-field-jsonb/application.css
+//= link administrate-field-jsonb/application.js
+```
+
+The manifest file is at `app/assets/config` by default.
+
 ## Usage
 
 ```ruby
