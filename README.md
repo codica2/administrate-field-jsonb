@@ -18,7 +18,7 @@ And then execute:
 bundle
 ```
 
-If you are using asset pipeline, add the folloing lines to your `manifest.js`:
+If you are using asset pipeline, add the following lines to your `manifest.js`:
 
 ```js
 //= link administrate-field-jsonb/application.css
