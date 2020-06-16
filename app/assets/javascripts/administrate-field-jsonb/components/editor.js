@@ -1,6 +1,6 @@
-$(function () {
+$(document).on(typeof Turbolinks === 'undefined' ? 'ready' : 'turbolinks:load', function() {
   let editor, updatedJson;
-  $('.administrate-jsoneditor').each(function (index) {
+  $('.administrate-jsoneditor').each(function(index) {
 
     let $current = $(this).find("textarea");
 
@@ -14,7 +14,7 @@ $(function () {
 
         $current.val(JSON.stringify(updatedJson));
       },
-      onError: function (err) {
+      onError: function(err) {
         alert(err.toString());
       },
       navigationBar: false,

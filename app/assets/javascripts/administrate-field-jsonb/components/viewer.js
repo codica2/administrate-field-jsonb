@@ -1,4 +1,4 @@
-$(function () {
+$(document).on(typeof Turbolinks === 'undefined' ? 'ready' : 'turbolinks:load', function() {
   let viewer;
   $('.administrate-jsoneditor-viewer').each(function (index) {
 
