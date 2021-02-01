@@ -39,6 +39,14 @@ module Administrate
         options[:blank_sign] || '-'
       end
 
+      def label(data)
+        if options[:label]
+          return options[:label].call(data)
+        end
+
+        "#{attribute.to_s.singularize.titleize}"
+      end
+
       class Engine < ::Rails::Engine
 
         Administrate::Engine.add_javascript 'administrate-field-jsonb/application'
