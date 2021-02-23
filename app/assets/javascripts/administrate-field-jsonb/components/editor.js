@@ -1,4 +1,8 @@
-$(document).on(typeof Turbolinks === 'undefined' ? 'ready' : 'turbolinks:load', function() {
+let eventName = 'ready'
+if(typeof TurboLinks !== 'undefined') eventName = 'turbolinks:load'
+if(typeof Turbo !== 'undefined') eventName = 'turbo:load'
+
+$(document).on(eventName, function() {
   let editor, updatedJson;
   $('.administrate-jsoneditor').each(function(index) {
 
