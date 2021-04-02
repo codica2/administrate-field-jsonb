@@ -1,20 +1,26 @@
-$(document).on(typeof Turbolinks === 'undefined' ? 'ready' : 'turbolinks:load', function() {
-  let viewer;
-  $('.administrate-jsoneditor-viewer').each(function (index) {
+(function () {
+  eventName = 'ready'
+  if (typeof TurboLinks !== 'undefined') eventName = 'turbolinks:load'
+  if (typeof Turbo !== 'undefined') eventName = 'turbo:load'
 
-    let $current = $(this).find("textarea");
+  $(document).on(eventName, function () {
+    let viewer;
+    $('.administrate-jsoneditor-viewer').each(function (index) {
 
-    let options = {
-      navigationBar: false,
-      search: false,
-      enableSort: false,
-      enableTransform: false,
-      mode: 'view',
-      modes: [],
-    };
+      let $current = $(this).find("textarea");
 
-    let viewer = new JSONEditor(this, options);
+      let options = {
+        navigationBar: false,
+        search: false,
+        enableSort: false,
+        enableTransform: false,
+        mode: 'view',
+        modes: [],
+      };
 
-    viewer.set(JSON.parse($current.val()));
+      let viewer = new JSONEditor(this, options);
+
+      viewer.set(JSON.parse($current.val()));
+    });
   });
-});
+})();
