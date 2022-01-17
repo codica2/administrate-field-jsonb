@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('lib', __dir__)
 
 Gem::Specification.new do |gem|
   gem.name = 'administrate-field-jsonb'
-  gem.version = '0.4.4'
+  gem.version = '0.4.5'
   gem.authors = ['Sergey Volkov', 'Codica']
   gem.email = ['sergvolkov.codica@gmail.com']
   gem.homepage = 'https://github.com/codica2/administrate-field-jsonb'
