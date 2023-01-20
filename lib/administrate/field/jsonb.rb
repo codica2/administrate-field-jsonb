@@ -9,7 +9,7 @@ module Administrate
     class JSONB < Administrate::Field::Base
 
       def transform
-        return nil if data.blank?
+        return nil if data.blank? && (!options.key?(:nil_blank) || options[:nil_blank] == true)
         return data unless options[:transform].present? && options[:transform].is_a?(Array)
 
         result = data
