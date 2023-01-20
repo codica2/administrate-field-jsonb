@@ -102,6 +102,17 @@ ATTRIBUTE_TYPES = {
 }.freeze
 ```
 
+In some situations you may preffer not to nullify empty records. For example you store your JSONB in `not null` database column and always have at least an empty json object `{}`. In such situation you can use `nil_blank` option:
+
+```ruby
+ATTRIBUTE_TYPES = {
+  # ...
+  details: Field::JSONB.with_options(
+    nil_blank: false
+  )
+}.freeze
+```
+
 ## How it looks like
 
 ### Form
