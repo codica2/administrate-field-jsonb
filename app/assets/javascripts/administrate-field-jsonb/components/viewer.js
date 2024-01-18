@@ -6,6 +6,9 @@
   $(document).on(eventName, function () {
     let viewer;
     $('.administrate-jsoneditor-viewer').each(function (index) {
+      if ($(this).find(".jsoneditor").length > 0) {
+        return;
+      }
 
       let $current = $(this).find("textarea");
 

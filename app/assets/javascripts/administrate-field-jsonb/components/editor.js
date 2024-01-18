@@ -6,6 +6,9 @@
   $(document).on(eventName, function () {
     let editor, updatedJson;
     $('.administrate-jsoneditor').each(function (index) {
+      if ($(this).find(".jsoneditor").length > 0) {
+        return;
+      }
 
       let $current = $(this).find("textarea");
 
