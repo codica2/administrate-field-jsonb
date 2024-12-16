@@ -184,7 +184,7 @@ languages: Field::JSONB.with_options(advanced_view: {
 
 ## License
 
-Copyright © 2015-2022 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
+Copyright © 2015-2025 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## About Codica
 
